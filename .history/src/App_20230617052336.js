@@ -1,12 +1,11 @@
 import React,{useState,useEffect, Fragment} from 'react';
-import {BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { Router, Routes, Route } from 'react-router-dom'
 import axios from 'axios';
 import './App.css';
 import Navbar from './components/layout/Navbar'
 import Alert from './components/layout/Alert'
 import Pictures from './components/pictures/Pictures'
 import Search from './components/pictures/Search'
-import About from './components/pages/About'
 
 const App = () => {
   const [pictures, setPictures] = useState([])
@@ -52,7 +51,7 @@ const App = () => {
       <div className="container">  
       <Alert alert={alert} />
         <Routes>
-          <Route exact path='/' element={
+          <Route path='/' element={
             <>
               <Fragment>
                 <Search
@@ -65,7 +64,6 @@ const App = () => {
               </Fragment>  
             </>
           } />
-          <Route exact path='/about' element={<About/>}/>
         </Routes>
       </div>
     </div>

@@ -1,5 +1,5 @@
 import React,{useState,useEffect, Fragment} from 'react';
-import {BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { Router, Routes, Route } from 'react-router-dom'
 import axios from 'axios';
 import './App.css';
 import Navbar from './components/layout/Navbar'
@@ -52,7 +52,7 @@ const App = () => {
       <div className="container">  
       <Alert alert={alert} />
         <Routes>
-          <Route exact path='/' element={
+          <Route path='/' element={
             <>
               <Fragment>
                 <Search
@@ -65,7 +65,7 @@ const App = () => {
               </Fragment>  
             </>
           } />
-          <Route exact path='/about' element={<About/>}/>
+          <Route path='/about' element={<About/>}/>
         </Routes>
       </div>
     </div>

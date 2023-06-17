@@ -1,16 +1,16 @@
-import React,{useState,useEffect, Fragment} from 'react';
-import {BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import React,{useState,useEffect} from 'react';
+import { Router, Routes, Route } from 'react-router-dom'
 import axios from 'axios';
 import './App.css';
 import Navbar from './components/layout/Navbar'
 import Alert from './components/layout/Alert'
 import Pictures from './components/pictures/Pictures'
 import Search from './components/pictures/Search'
-import About from './components/pages/About'
 
 const App = () => {
   const [pictures, setPictures] = useState([])
   const [loading, setLoading] = useState(false)
+  const [picture, setPicture] = useState({})
   const [alert, setAlert] = useState(null)
   
   const getPictures =async() => {
@@ -46,30 +46,19 @@ const App = () => {
   },[])
 
   return (
-    <Router>
-      <div className="App">
+    <div className="App">
       <Navbar />
       <div className="container">  
       <Alert alert={alert} />
-        <Routes>
-          <Route exact path='/' element={
-            <>
-              <Fragment>
-                <Search
-                searchPictures={searchPictures}
-                clearPicture={clearPictures}
-                showClear={pictures.length > 0 ? true : false}
-                setAlert={showAlert}
-                />
-                <Pictures pictures={pictures} loading={loading} />
-              </Fragment>  
-            </>
-          } />
-          <Route exact path='/about' element={<About/>}/>
-        </Routes>
+        <Search
+          searchPictures={searchPictures}
+          clearPicture={clearPictures}
+          showClear={pictures.length > 0 ? true : false}
+          setAlert={showAlert}
+        />
+        <Pictures pictures={pictures} loading={loading} />
       </div>
     </div>
-    </Router>
   );
 }
 
